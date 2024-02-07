@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -31,6 +32,8 @@ int
 main(void)
 {
 	char *signal_name = "notify";
+
+	printf("Test variadic usage in glib\n");
 
 	g_signal_new(signal_name,
                      1,
@@ -91,7 +94,7 @@ g_signal_newv(const char *signal_name,
 {
 	uintptr_t val = va_arg(args, uintptr_t);
 
-	printf("val = %X\n", (unsigned int) val);
+	assert(val == 0x42);
 	return 0;
 }
 
